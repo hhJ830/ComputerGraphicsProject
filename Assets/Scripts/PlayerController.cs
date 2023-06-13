@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         // 기본값
-        Speed = 5.0f;
+        Speed = 4.0f;
         Gravity = 10.0f;
         MoveDir = Vector3.zero;
         JumpPow = 5.0f;
@@ -95,5 +95,7 @@ public class PlayerController : MonoBehaviour
         // 앞 단계까지는 캐릭터가 이동할 방향만 결정하였으며,
         // 실제 캐릭터의 이동은 여기서 담당합니다.
         SelectPlayer.Move(MoveDir * Time.deltaTime);
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }
