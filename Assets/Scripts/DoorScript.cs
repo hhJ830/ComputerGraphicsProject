@@ -3,15 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class DoorScript : MonoBehaviour
 {
-    public GameObject keyItem;
-    public GameObject message;
     public bool open = false;
+    public bool needpassword = false;
     public float doorOpenAngle = -90f;
     public float doorCloseAngle = 0f;
-    public float smooth = 1f;
+    public float smooth = 2f;
+    public GameObject keyObject;
+    public GameObject message;
+    public GameObject passwordScreen;
+    public TMP_InputField inputPassword;
 
     private Quaternion initialRotation;
 
@@ -25,11 +29,10 @@ public class DoorScript : MonoBehaviour
         open = !open;
     }
 
-    public void setMessageOff()
+    void messageOff()
     {
         message.SetActive(false);
     }
-    
 
     private void OnMouseDown()
     {
@@ -37,20 +40,36 @@ public class DoorScript : MonoBehaviour
         {
             ToggleDoorState();
         }
-        else
+        else if (message != null)
         {
             message.SetActive(true);
-            Invoke("setMessageOff", 2);
+            Invoke("messageOff", 2f);
         }
     }
 
     public bool CanInteract()
     {
-        if (keyItem.activeSelf)
-            return true;
-        else
+        if (keyObject != null && keyObject.activeSelf == false && !needpassword)
+        {
             return false;
-         // 상호작용 가능 여부에 따른 추가 로직을 구현하려면 조건을 여기에 추가하세요.
+        }
+        else if (needpassword)
+        {
+            if (keyObject.activeSelf == true)
+            {
+                return true;
+            }
+            if (keyObject.activeSelf == false)
+            {
+                passwordScreen.SetActive(true);
+                inputPassword.ActivateInputField();
+                inputPassword.Select();
+                return false;
+            }
+            return true;
+        }
+        else
+            return true; // 상호작용 가능 여부에 따른 추가 로직을 구현하려면 조건을 여기에 추가하세요.
     }
 
     void Update()

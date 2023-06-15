@@ -16,7 +16,7 @@ public class BlockedDoorScript : MonoBehaviour
     private void OnMouseDown()
     {
          message.SetActive(true);
-         Invoke("setMessageOff", 3);
+         Invoke("setMessageOff", 2);
     }
 
     // Start is called before the first frame update

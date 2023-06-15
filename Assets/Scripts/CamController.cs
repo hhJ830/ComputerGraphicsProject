@@ -9,10 +9,11 @@ public class CamController : MonoBehaviour
     public float ymove = 0;  // Y축 누적 이동량
     public float distance = 3;
 
-
     // Update is called once per frame
     void Update()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         xmove += Input.GetAxis("Mouse X"); // 마우스의 좌우 이동량을 xmove 에 누적합니다.
         ymove -= Input.GetAxis("Mouse Y"); // 마우스의 상하 이동량을 ymove 에 누적합니다.
         transform.rotation = Quaternion.Euler(ymove*3.0f, xmove*3.0f, 0); // 이동량에 따라 카메라의 바라보는 방향을 조정합니다.

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemClick : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class ItemClick : MonoBehaviour
     public GameObject ss;
     public GameObject inventoryss;
     public GameObject clickMessage;
+    public GameObject doc;
 
     void OnMouseDown()
     {
@@ -17,6 +19,8 @@ public class ItemClick : MonoBehaviour
             inventoryss.SetActive(true);
         if (clickMessage != null)
             clickMessage.SetActive(false);
+        if (doc != null)
+            doc.SetActive(true);
     }
 
     void OnMouseOver()
