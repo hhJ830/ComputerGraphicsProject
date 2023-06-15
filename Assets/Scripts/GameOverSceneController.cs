@@ -10,6 +10,8 @@ public class GameOverSceneController : MonoBehaviour
 
     private void Start()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         // √ ±‚»≠
         //gameOverText.gameObject.SetActive(false);
 
@@ -22,7 +24,7 @@ public class GameOverSceneController : MonoBehaviour
 
     private void ReturnToGame()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("InGameScene");
     }
 
     private void ExitGame()

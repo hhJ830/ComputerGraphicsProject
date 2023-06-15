@@ -16,12 +16,14 @@ public class DoorScript : MonoBehaviour
     public GameObject message;
     public GameObject passwordScreen;
     public TMP_InputField inputPassword;
+    AudioSource audioSource;
 
     private Quaternion initialRotation;
 
     void Start()
     {
         initialRotation = transform.localRotation;
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void ToggleDoorState()
@@ -39,6 +41,7 @@ public class DoorScript : MonoBehaviour
         if (CanInteract())
         {
             ToggleDoorState();
+            audioSource.Play();
         }
         else if (message != null)
         {

@@ -10,7 +10,15 @@ public class ItemClick : MonoBehaviour
     public GameObject inventoryss;
     public GameObject clickMessage;
     public GameObject doc;
+    public bool isRotate;
+    bool isClicked;
+    int count = 0;
+    public float degreePerSecond;
 
+    void Start()
+    {
+        isClicked = false;
+    }
     void OnMouseDown()
     {
         if (ss != null)
@@ -21,6 +29,7 @@ public class ItemClick : MonoBehaviour
             clickMessage.SetActive(false);
         if (doc != null)
             doc.SetActive(true);
+        isClicked = true;
     }
 
     void OnMouseOver()
@@ -33,5 +42,17 @@ public class ItemClick : MonoBehaviour
     {
         if (clickMessage != null)
             clickMessage.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (isRotate == true && isClicked == true)
+        {
+            count++;
+            transform.Rotate(Vector3.up * Time.deltaTime * degreePerSecond);
+
+            if (count == 1000)
+                isRotate = false;
+        }
     }
 }

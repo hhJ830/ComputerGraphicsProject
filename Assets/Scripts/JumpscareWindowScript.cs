@@ -5,35 +5,53 @@ using UnityEngine.UI;
 
 public class JumpscareWindowScript : MonoBehaviour
 {
-    public GameObject message;
+    public GameObject warningmessage;
+    public GameObject jumpscare;
+    bool isOver;
     float overTime = 0;
 
     void Start()
     {
+        isOver = false;
         overTime = 0;
     } 
 
-    void setMessageOff()
+    void OnMouseOver()
     {
-        message.SetActive(false);
+        isOver = true;
     }
-    
-    /*
-    private void OnMouseEnter()
-    {
-        overTime += 1;
-        if (overTime == 1)
-        {
-            message.SetActive(true);
-            Invoke("setMessageOff", 2);
-        }
-    }
-    */
 
-    private void OnMouseDown()
+    void OnMouseExit()
     {
-        message.SetActive(true);
-        Invoke("setMessageOff", 2);
+        isOver = false;
+    }
+
+    void offMessage()
+    {
+        warningmessage.SetActive(false);
+    }
+
+    void offJumpScare()
+    {
+        jumpscare.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (isOver)
+        {
+            overTime++;
+            if (overTime == 1500)
+            {
+                warningmessage.SetActive(true);
+                Invoke("offMessage", 2);
+            }
+            if (overTime == 4000)
+            {
+                jumpscare.SetActive(true);
+                Invoke("offJumpScare", 2);
+            }
+        }
     }
 
 }
