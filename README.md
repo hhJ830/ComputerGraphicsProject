@@ -1,8 +1,8 @@
 # ComputerGraphicsProject
 컴퓨터 그래픽스 5조 프로젝트입니다.
 
-### 공포 방탈출 게임
-유니티, C#
+## 유니티를 사용한 공포 방탈출 게임
+
 <br>
 <img scr="https://github.com/hhJ830/ComputerGraphicsProject/assets/99874673/ee3d9919-ad3d-4e94-9997-cbb3ee0c0c44" width=70% height=70%>
 
